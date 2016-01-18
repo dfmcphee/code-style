@@ -1,4 +1,4 @@
-# Mobify Code Style
+# Code Style
 
 A repo to document code standards for different languages and provide tools for linting Mobify projects.
 
