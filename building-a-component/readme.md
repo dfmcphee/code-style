@@ -17,7 +17,7 @@
 
 ## Basic conventions
 Components should be named and created based on their primary function or use.
-This repository includes a [sample component](_sample-component.scss) for reference when building a new component.
+This repository includes a [sample component](_sample-component.scss) to use as a reference when building out a new component.
 
 ## BEM
 

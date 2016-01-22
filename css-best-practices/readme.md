@@ -172,9 +172,9 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 
 .selector-a,
 .selector-b {
-    padding: 10px;
+  padding: 10px;
 
-    background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 ```
 
@@ -199,74 +199,71 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 1. Child elements
 
 ```scss
-.c-selector {
-    // Extends
-    @extend %x-extend;
+.selector {
+  // Includes
+  @include mixin();
 
-    // Includes
-    @include mixin();
+  // Content
+  content: '\25B6';
 
-    // Content
-    content: '\25B6';
+  // Positioning
+  position: absolute;
+  left: 10px;
+  z-index: 10;
 
-    // Positioning
-    position: absolute;
-    left: 10px;
-    z-index: 10;
+  // Display & Box Model
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #333;
 
-    // Display & Box Model
-    display: inline-block;
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #333;
+  // Visual styles
+  background: #000;
+  border-radius: 10px;
+  @include box-shadow(5px 5px 0 rgba(0, 0, 0, 0);
 
-    // Visual styles
-    background: #000;
-    border-radius: 10px;
-    @include box-shadow(5px 5px 0 rgba(0, 0, 0, 0);
+  // Text styles
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: right;
 
-    // Text styles
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 16px;
-    text-align: right;
+  // Vendor prefixed styles
+  -webkit-user-select: none;
+  -webkit-tap-highlight: rgba(0, 0, 0, 0);
 
-    // Vendor prefixed styles
-    -webkit-user-select: none;
-    -webkit-tap-highlight: rgba(0, 0, 0, 0);
+  // Styles that don't fall under any of the above categories
+  pointer-events: none;
 
-    // Styles that don't fall under any of the above categories
-    pointer-events: none;
+  // Animations & Transitions
+  transition: all 0.2s;
 
-    // Animations & Transitions
-    transition: all 0.2s;
+  // Pseudo-classes
+  &:active {
+    background: blue;
+  }
+  &:last-child {
+    border-top: 1px solid blue;
+  }
 
-    // Pseudo-classes
-    &:active {
-        background: blue;
-    }
-    &:last-child {
-        border-top: 1px solid blue;
-    }
+  // Pseudo-elements
+  &::before {
+    content: 'CSS Rules!';
+  }
 
-    // Pseudo-elements
-    &::before {
-        content: 'CSS Rules!';
-    }
+  // Modifier Elements
+  &.x--light {
+    background: #999;
+  }
 
-    // Modifier Elements
-    &.x--light {
-        background: #999;
-    }
-
-    // Child Elements
-    span {
-        font-weight: bold;
-    }
+  // Child Elements
+  span {
+    font-weight: bold;
+  }
 }
 ```
 
@@ -277,15 +274,15 @@ Sometimes we break out of this convention to add to the readability of our style
 
 ```scss
 .x-selector {
-    @include icon(
-        home,
-        $color: blue,
-        $size: 15px
-    );
+  @include icon(
+    home,
+    $color: blue,
+    $size: 15px
+  );
 
-    transition:
-        opacity 0.2s ease-in-out,
-        width 0.5s linear;
+  transition:
+    opacity 0.2s ease-in-out,
+    width 0.5s linear;
 }
 ```
 

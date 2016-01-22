@@ -2,7 +2,7 @@
 
 This document outlines the way our team is expected to write their CSS. Following this document ensures that everyone is writing markup that feels familiar and can be maintained by anyone with little overhead.
 
-We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
+We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM naming conventions, and others.
 
 
 ## Table of contents
@@ -29,7 +29,7 @@ These guidelines are a summary of our base principles: Our code bases should all
 * Be page specific only as a last resort
 * Be written with nesting no deeper than 2 levels preferably
 
-Our seperation of concerns is reflected by our style directory structure as follows:
+Our separation of concerns is reflected by our style directory structure as follows:
 
 ```
 /stylesheets
