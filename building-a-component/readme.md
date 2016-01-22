@@ -273,4 +273,4 @@ Dedicated subcomponents should be used for layout separated from other visual st
 }
 ```
 
-Continue on to [CSS best practices →](css-best-practices#css-best-practices)
+Continue on to [CSS best practices →](../css-best-practices#css-best-practices)
