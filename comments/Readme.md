@@ -103,10 +103,10 @@ Bad example:
 // =======
 
 .button {
-    display: block; // This must be a block because reasons. Reasons like because
-                    // that's just how I decided to do things, etc. etc. etc.
-    width: auto; // Buttons are people too. Let them be who they want to be! Stop
-                 // the oppression!
+  display: block; // This must be a block because reasons. Reasons like because
+                  // that's just how I decided to do things, etc. etc. etc.
+  width: auto; // Buttons are people too. Let them be who they want to be! Stop
+               // the oppression!
 }
 ```
 
@@ -123,8 +123,8 @@ Better example:
 // 2. Buttons are people too. Let them be who they want to be! Stop the oppression!
 
 .button {
-    display: block; // 1
-    width: auto; // 2
+  display: block; // 1
+  width: auto; // 2
 }
 ```
 
@@ -139,11 +139,11 @@ Notice how we can apply the same line comment to multiple lines:
 // 1. Absolutely position `.modal__inner` relative to the parent `.modal`
 
 .modal {
-    position: relative; // 1
+  position: relative; // 1
 }
 
 .modal__inner {
-    position: absolute; // 1
+  position: absolute; // 1
 }
 ```
 
@@ -173,24 +173,24 @@ Example:
 //
 // @url http://www.website.com/checkout
 
-.t-checkout {
+.checkout {
 
-    // Global
-    // ------
-    //
-    // ...
-
-
-    // Your Details
-    // ------------
-    //
-    // ...
+  // Global
+  // ------
+  //
+  // ...
 
 
-    // Credit Card Info
-    // ----------------
-    //
-    // ...
+  // Your Details
+  // ------------
+  //
+  // ...
+
+
+  // Credit Card Info
+  // ----------------
+  //
+  // ...
 }
 ```
 
@@ -208,7 +208,7 @@ Alternatively:
 //
 // ...
 
-.t-checkout {
+.checkout {
 }
 
 
@@ -217,7 +217,7 @@ Alternatively:
 //
 // ...
 
-.t-checkout__details {
+.checkout__details {
 }
 
 
@@ -226,7 +226,7 @@ Alternatively:
 //
 // ...
 
-.t-checkout__credit-card-info {
+.checkout__credit-card-info {
 }
 ```
 
@@ -239,21 +239,21 @@ the base template scope and with a level 2 heading. Example:
 //
 // @url http://www.website.com/checkout
 
-.t-checkout {
+.checkout {
 }
 
 
 // Checkout: Form
 // --------------
 
-.t-checkout__form {
+.checkout__form {
 }
 
 
 // Checkout: Sidebar
 // -----------------
 
-.t-checkout__sidebar {
+.checkout__sidebar {
 }
 ```
 
@@ -280,7 +280,7 @@ SCSS file.
 // Breadcrumbs
 // ===========
 
-.c-breadcrumbs {
+.breadcrumbs {
 }
 ```
 
@@ -295,7 +295,7 @@ use a level 2 heading for each sub-component.
 // Breadcrumbs: Link
 // -----------------
 
-.c-breadcrumbs__link {
+.breadcrumbs__link {
 }
 ```
 
@@ -310,71 +310,33 @@ Notice the lack of any "Link Arrow" heading in the following example:
 // Breadcrumbs: Link
 // -----------------
 
-.c-breadcrumbs__link {
+.breadcrumbs__link {
 }
 
-.c-breadcrumbs__link-arrow {
+.breadcrumbs__link-arrow {
 
 }
 ```
 
 
-### Modifier Styles
+### Modifier styles
 
 Modifiers are the styles that are added or modified on top of an existing component
-or sub-component. These should be grouped together with their relavent component
-or sub-component in one of two ways.
-
-Choose *one* method and *stick to it*!
-
-Method 1: Nested
+or sub-component. These should be grouped together with their relevant component
+or sub-component.
 
 ```
 // Breadcrumbs: Link
 // -----------------
 
-.c-breadcrumbs__link {
+.breadcrumbs__link {
+}
 
-    &.c--current {
-    }
+.breadcrumbs__link--current {
 }
 ```
 
-Method 2: Unnested
-
-```
-// Breadcrumbs: Link
-// -----------------
-
-.c-breadcrumbs__link {
-}
-
-.c-breadcrumbs__link.c--current {
-}
-```
-
-Either way, only include a comment heading if the modifier is important enough
-to require one. In the above example, it could be argued that a current link is
-very close to being it's own sub-component as it could easily change most of the
-breadcrumb link styles. That could be enough to warrant a heading:
-
-```
-// Breadcrumbs: Link
-// -----------------
-
-.c-breadcrumbs__link {
-}
-
-
-// Breadcrumbs: Current Link
-// -------------------------
-
-.c-breadcrumbs__link.c--current {
-}
-```
-
-
-Functions & Mixins
+Functions & mixins
 ------------------
 
 `@function` and `@mixin` code have the same rules as most everything mentioned
@@ -418,5 +380,3 @@ An example of both the doc block and dependencies can be seen here:
     @return $value + $modifier;
 }
 ```
-
-Continue on to [Hybrid App Projects →](../hybrid-projects#hybrid-app-projects)

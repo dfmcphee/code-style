@@ -1,38 +1,39 @@
-# Code Style
+# CSS Code Style
 
-A repo to document code standards for different languages and provide tools for linting Mobify projects.
 
-[![NPM version](https://badge.fury.io/js/mobify-code-style.svg)](http://badge.fury.io/js/mobify-code-style)
+## Table of Contents
 
-## JavaScript
+* [Introduction](introduction#introduction)
+    * [Tools & frameworks](introduction#tools--frameworks)
+    * [Philosophy & structure](introduction#philosophy--structure)
+* [Building a component](class-naming-conventions#class-naming-conventions)
+    * [Basic conventions](class-naming-conventions#basic-conventions)
+    * [BEM](class-naming-conventions#csm)
+        * [Components](class-naming-conventions#components)
+        * [Sub-components](class-naming-conventions#sub-components)
+        * [Modifiers](class-naming-conventions#modifiers)
+        * [Component modifiers that affect subcomponents](class-naming-conventions#component-modifiers-that-affect-subcomponents)
+        * [State](class-naming-conventions#state)
+    * [Class prefix conventions](class-naming-conventions#class-prefix-conventions)
+    * [Us versus them](class-naming-conventions#us-versus-them-aka-theres-an-x-ception-to-every-rule)
+        * [When to use our selector naming scheme](class-naming-conventions#when-to-use-our-selector-naming-scheme)
+        * [When to use their existing selectors](class-naming-conventions#when-to-use-their-existing-selectors)
+        * [How to use their existing selectors in our components](class-naming-conventions#how-to-use-their-existing-selectors-in-our-components)
+* [CSS best practices](css-best-practices#css-best-practices)
+    * [Code like it's 2020](css-best-practices#code-like-its-2020)
+    * [Selector specificity](css-best-practices#selector-specificity)
+    * [A note on attribute selectors](css-best-practices#a-note-on-attribute-selectors)
+    * [Size units](css-best-practices#size-units)
+    * [Context sensitivity](css-best-practices#context-sensitivity)
+    * [Format](css-best-practices#format)
+    * [Declaration order](css-best-practices#declaration-order)
+* [Sass (SCSS) best practices](sass-best-practices#sass-scss-best-practices)
+    * [Nest only when necessary](sass-best-practices#nest-only-when-necessary)
+    * [Global vs. local variables/mixins](sass-best-practices#global-vs-local-variablesmixins)
+    * [`@extends`](sass-best-practices#extends)
+    * [Filename naming convention](sass-best-practices#filename-naming-convention)
+    * [Commenting best practice](sass-best-practices#commenting-best-practice)
+    * [Variable naming convention](sass-best-practices#variable-naming-convention)
+* [Block comment documentation guide](comments/Readme.md)
 
-Typically, we lint our javascript files using [Grunt](http://gruntjs.com/) and [grunt-eslint](https://github.com/sindresorhus/grunt-eslint). grunt-eslint is a Grunt helper for the [ESLint](http://eslint.org/) linter.
-
-To add javascript linting to your project:
-
- 1. Install the NPM `mobify-code-style` and `grunt-eslint` modules.
- 2. Create a [Gruntfile](http://gruntjs.com/sample-gruntfile) if you don't have one already.
- 3. In the initConfig of your gruntfile, add a section for eslint pointing to the correct linting file.
-
-Sample eslint config:
-
-```javascript
-eslint:{
-    dev: {
-        src: ['src/**/*.js'],
-        options: {
-            // When true, eslint will test _only_ the rules set in the provided
-            // configuration file
-            reset: false,
-            config: 'node_modules/mobify-code-style/javascript/.eslintrc'
-        }
-    }
-}
-```
-## CSS
-Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot of tender care by @kpeatt and @jeffkamo.
-
-## Python
-
-See the `python` directory of this repo for a standardized `pylintrc` file and
-instructions on using `pep8`, `pylint` and `pyflakes` to check Python code.
+Continue on to [the Introduction →](introduction#introduction)

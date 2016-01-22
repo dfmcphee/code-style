@@ -1,4 +1,4 @@
-# Class Naming Conventions
+# Building a component
 
 
 ## Table of Contents
@@ -19,23 +19,22 @@
 
 ## Basic Conventions
 
-* Class names are kebab-case (*words-are-dash-separated*)
-* Each class is prefixed with either `c-`, `t-` or `x-` ([consult this table](#class-prefix-conventions) for details)
 
 
-## CSM
 
-Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
+## BEM
+
+We use [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
 > BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Subcomponent instead.
 
 ```html
-<div class="c-blog">
-    <h1 class="c-blog__title">Blog Title</h1>
-    <div class="c-blog-post c--featured">
-        <h2 class="c-blog-post__title">Blog Post Title</h2>
-        <div class="c-blog-post__date">
-            <p class="c-blog-post__time">12:03pm</p>
+<div class="blog">
+    <h1 class="blog__title">Blog Title</h1>
+    <div class="blog-post blog-post--featured">
+        <h2 class="blog-post__title">Blog Post Title</h2>
+        <div class="blog-post__date">
+            <p class="blog-post__time">12:03pm</p>
         </div>
     </div>
 </div>
@@ -43,26 +42,25 @@ Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [B
 
 This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
 
-`.c-blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
+`.blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
 
-`.c-blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
+`.blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
 
-`.c-blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
+`.blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
 
-`.c--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying a component.
+`.blog-post--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying a component.
 
-`.c-blog-post__time` Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a subcomponent even though it is not a direct child of the component.
+`.blog-post__time` Like before, this is another sub-component. This time it belongs to the blog-post. It's still a subcomponent even though it is not a direct child of the component.
 
 ### Components
 
 The highest level of a module — it should describe an independent module that you are creating. Components should be able to exist on their own or within other components. They should always live at the root level of a file.
 
-* Prefixed with our component namespace `c`.
 * Hyphenated naming.
 * Not nested.
 
 ```scss
-.c-blog-post {
+.blog-post {
 }
 ```
 
@@ -72,22 +70,22 @@ This is a secondary element inside of a component. It is always written as a cha
 
 Like components these should always live at the root level of a file. Do not nest these within the parent component or another subcomponent. The class name should do all the work necessary.
 
-* Prefixed by the parent component and two underscores `c-component-name__`.
+* Prefixed by the parent component and two underscores `component-name__`.
 * Live below the parent component in the root of the file. Not nested.
 * Are declared in the order they appear.
 * Subcomponents do not have to be direct children of the component in the markup. They can be any descendent.
 
 ```scss
 // Good!
-.c-blog-post__title {
+.blog-post__title {
 }
 
 // Bad!
 //
 // Note how .c-blog-post__title is nested inside it's parent class
-.c-blog-post {
-    .c-blog-post__title {
-    }
+.blog-post {
+  .blog-post__title {
+  }
 }
 ```
 
@@ -169,7 +167,7 @@ In larger files, adding a comment in the `.c-component__sub-component` notes can
 // Modified by .c-blog-post.c--featured
 
 .c-blog-post__title {
-    ...
+  ...
 }
 ```
 
@@ -180,11 +178,11 @@ This method makes it easier to visualize the differences between a sub-component
 
 ```scss
 .c-blog-post__title {
-    ...
+  ...
 
-    .c-blog-post.c--featured & {
-        ...
-    }
+  .c-blog-post.c--featured & {
+    ...
+  }
 }
 ```
 
@@ -192,17 +190,17 @@ In larger files, adding a comment in the `.c--modifier` notes can be helpful:
 ```scss
 // Blog Post
 // ===
-.c-blog-post {
-    ...
+.blog-post {
+  ...
 
-    // Featured Post
-    // ---
-    //
-    // Also modifies .c-blog-post__title
+  // Featured Post
+  // ---
+  //
+  // Also modifies .blog-post__title
 
-    &.c--featured {
-        ...
-    }
+  &.featured {
+      ...
+  }
 }
 ```
 
