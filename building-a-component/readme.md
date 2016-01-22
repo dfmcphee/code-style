@@ -17,6 +17,7 @@
 
 ## Basic conventions
 Components should be named and created based on their primary function or use.
+This repository includes a [sample component](_sample-component.scss) for reference when building a new component.
 
 ## BEM
 
@@ -224,7 +225,7 @@ If either of these conditions are true, it is probably better to split it into i
 It is best to avoid contextual styles (components "reaching into" other components) — use variations instead.
 
 
-### Functional variables
+## Functional variables
 All variables used in a component should be functional instead of just visual. Functional variables can only refer to a visual variable.
 
 
@@ -248,7 +249,7 @@ $green: #96bf48;
 ```
 
 
-### Layout subcomponents
+## Layout subcomponents
 Dedicated subcomponents should be used for layout separated from other visual styles.
 
 ```scss

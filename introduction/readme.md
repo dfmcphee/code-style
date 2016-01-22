@@ -15,8 +15,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 
 * [Sass](http://sass-lang.com/) is our preprocessor of choice
 * [PostCSS](https://github.com/postcss/postcss) for its [Autoprefixer](https://github.com/postcss/autoprefixer) plugin
-* [SCSS-Lint](https://github.com/causes/scss-lint) is our preferred linter for `SCSS`. See our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.scss-lint.yml))
-* [CSScomb](http://csscomb.com/) is a tool that can be plugged into most popular text editors that automatically formats your code! Our formatting ruleset can be found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.csscomb.json)
+* [SCSS-Lint](https://github.com/causes/scss-lint) is our preferred linter for `SCSS`. See our custom linting rules are found [here](https://github.com/Shopify/markup-and-styling-style-guide/blob/master/.scss-lint.yml))
 
 
 ## Philosophy & structure

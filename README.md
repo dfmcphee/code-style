@@ -1,12 +1,11 @@
 # Code style
 
 
-## Table of Contents
+## Table of contents
 
 * [Introduction](introduction#introduction)
   * [Tools & frameworks](introduction#tools--frameworks)
   * [Philosophy & structure](introduction#philosophy--structure)
-
 * [Building a component](building-a-component)
   * [Basic conventions](building-a-component#basic-conventions)
   * [BEM](building-a-component#bem)
