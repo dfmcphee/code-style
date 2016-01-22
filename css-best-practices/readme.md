@@ -1,7 +1,7 @@
-# CSS Best Practices
+# CSS best practices
 
 
-## Table of Contents
+## Table of contents
 
 * [Code like it's 2020](#code-like-its-2020)
 * [Selector specificity](#selector-specificity)

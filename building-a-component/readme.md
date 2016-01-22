@@ -1,26 +1,22 @@
 # Building a component
 
 
-## Table of Contents
-
-* [Basic Conventions](#basic-conventions)
-* [CSM](#csm)
-    * [Components](#components)
-    * [Sub-Components](#sub-components)
-    * [Modifiers](#modifiers)
-    * [Component modifiers that affect subcomponents](#component-modifiers-that-affect-subcomponents)
-    * [State](#state)
-* [Class Prefix Conventions](#class-prefix-conventions)
-* [Us versus Them](#us-versus-them-aka-theres-an-x-ception-to-every-rule)
-    * [When to use our selector naming scheme](#when-to-use-our-selector-naming-scheme)
-    * [When to use their existing selectors](#when-to-use-their-existing-selectors)
-    * [How to use their existing selectors in our components](#how-to-use-their-existing-selectors-in-our-components)
+## Table of contents
+* [Basic conventions](#basic-conventions)
+* [BEM](#bem)
+  * [Components](#components)
+  * [Sub-components](#sub-components)
+  * [Modifiers](#modifiers)
+  * [Component modifiers that affect subcomponents](#component-modifiers-that-affect-subcomponents)
+  * [State](#state)
+* [When to split a component](#when-to-split-a-component)
+* [Contextual styles](#contextual-styles)
+* [Functional variables](#functional-variables)
+* [Layout subcomponents](#layout-subcomponents)
 
 
-## Basic Conventions
-
-
-
+## Basic conventions
+Components should be named and created based on their primary function or use.
 
 ## BEM
 
@@ -91,115 +87,64 @@ Like components these should always live at the root level of a file. Do not nes
 
 ### Modifiers
 
-These are used to modify components or subcomponents. They are always chained to a specific component and are declared in the component or subcomponent that they affect.
-
-* Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`)
-* Contained to the scope of a single component
-* Always declared as a chained selector to a component or subcomponent.
-* Never declared as a stand-alone rule.
+These are used to modify components or subcomponents. They use `--` to signify they are modifying the component or subcomponent name that comes before it. You should not need to scope the selector to the component because it is already in the class name.
 
 ```scss
 // Good!
 //
-// Note how we use the parent selector (&) to chain the modifier class to .c-blog-post
-.c-blog-post {
-    &.c--featured {
-    }
+// Note how .blog-post--featured is a selector all by itself?
+.blog-post--featured {
 }
 
 // Bad!
 //
-// Note how .c--featured is a selector all by itself? That's bad! It
-// must be chained to it's parent selector!
-.c--featured {
+// Note how we use the parent selector (&) to chain the modifier class to .blog-post
+.blog-post {
+  &.blog-post--featured {
+  }
 }
 ```
 
 ### Component modifiers that affect subcomponents
 
-Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method in your project.
+Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method.
 
 ```html
-<div class="c-blog-post c--featured">
-    <h2 class="c-blog-post__title">Blog Post Title</h2>
-    <div class="c-blog-post__date">
-        <p class="c-blog-post__time">12:03pm</p>
+<div class="blog-post blog-post--featured">
+    <h2 class="blog-post__title">Blog Post Title</h2>
+    <div class="blog-post__date">
+        <p class="blog-post__time">12:03pm</p>
     </div>
 </div>
 ```
 
 
 #### 1. Styles grouped with modifier
-Nest the `.c-component__sub-component` elements inside the `.c-component` SCSS.
+Nest the `.component__sub-component` elements inside the `.component` SCSS.
 
 This method allows you to quickly update or edit the styles for all elements affected by a modifier.
 
 ```scss
-.c-blog-post {
-    &.c--featured {
-        ...
-
-        .c-blog-post__title {
-            ...
-        }
-    }
-}
-```
-
-*or*
-
-
-```scss
-.c-blog-post.c--featured {
-    ...
-
-    .c-blog-post__title {
-        ...
-    }
-}
-```
-
-In larger files, adding a comment in the `.c-component__sub-component` notes can be helpful:
-```scss
-// Blog Post Title
-// ---
-//
-// Modified by .c-blog-post.c--featured
-
-.c-blog-post__title {
-  ...
-}
-```
-
-#### 2. Styles grouped with sub-component
-Nest the modifier code inside the sub-component using `.c-component.c--modifier &`.
-
-This method makes it easier to visualize the differences between a sub-component and its modified states.
-
-```scss
-.c-blog-post__title {
+.blog-post--featured {
   ...
 
-  .c-blog-post.c--featured & {
+  .blog-post__title {
     ...
   }
 }
 ```
 
-In larger files, adding a comment in the `.c--modifier` notes can be helpful:
+#### 2. Styles grouped with sub-component
+Nest the modifier code inside the sub-component using `.component--modifier &`.
+
+This method makes it easier to visualize the differences between a sub-component and its modified states.
+
 ```scss
-// Blog Post
-// ===
-.blog-post {
+.blog-post__title {
   ...
 
-  // Featured Post
-  // ---
-  //
-  // Also modifies .blog-post__title
-
-  &.featured {
-      ...
+  .blog-post--featured & {
+    ...
   }
 }
 ```
@@ -209,174 +154,123 @@ In larger files, adding a comment in the `.c--modifier` notes can be helpful:
 When a component or sub-component changes state (in response to a user action or other dynamic behaviour), we often add a class so the state can be styled and made visible to the user. These are almost always added and removed by UI scripts as the user interacts with the page. If a class is being added or removed via JS, chances are it’s a state. Name these state classes similarly to modifiers but with an additional prefix of `is`. Since states will have the same CSS specificity as modifiers, define your states after modifiers in source-order to avoid modifiers accidentally overriding states.
 
 ```html
-<ul class="c-select">
-    <li class="c-select__option c--is-selected">Item 1</li>
-    <li class="c-select__option">Item 2</li>
-    <li class="c-select__option">Item 3</li>
+<ul class="select">
+  <li class="select__option select__option--is-selected">Item 1</li>
+  <li class="select__option">Item 2</li>
+  <li class="select__option">Item 3</li>
 </ul>
 ```
 
 ```scss
-.c-select {}
+.select {}
 
-.c-select__option {}
-.c-select__option.c--tall {} // modifier
+.select__option {}
+.select__option--tall {} // modifier
 
-.c-select__option.c--is-selected {} // state
-.c-select__option.c--tall.c--is-selected {} // state
+.select__option--is-selected {} // state
+.select__option--tall.select__option--is-selected {} // state
 ```
 
 An alternative construction using the `has` prefix is reserved for marking a parent component with a sub-component that is in a particular state. These cases should be rare, but when necessary, would look like this:
 
 ```html
-<ul class="c-select c--has-selection">
-    <li class="c-select__option c--is-selected">Item 1</li>
-    <li class="c-select__option">Item 2</li>
-    <li class="c-select__option">Item 3</li>
+<ul class="select select--has-selection">
+    <li class="select__option select__option--is-selected">Item 1</li>
+    <li class="select__option">Item 2</li>
+    <li class="select__option">Item 3</li>
 </ul>
 ```
 
 ```scss
-.c-select {}
-.c-select--large {} // modifier
-.c-select.c--has-selection {} // state
+.select {}
+.select--large {} // modifier
+.select--has-selection {} // state
 ```
 
-An exception is the use of ARIA roles for styling state. Where an ARIA role maps exactly to the state to be styled, it should be preferred over a class, since the attribute being styled carries additional value to users. For example, the custom select element being built above should be marked up with ARIA roles to be understood by screen readers as a select control. In this case, styling on `aria-selected`is preferred to `c--is-selected`. *CAUTION*: don’t add ARIA attributes in order to style a component. Only use them in stylesheets where they are needed for accessibility and make a state class redundant.
-
-```html
-<ul class="c-select" role="listbox">
-    <li class="c-select__option" role="option" aria-selected>Item 1</li>
-    <li class="c-select__option" role="option">Item 2</li>
-    <li class="c-select__option" role="option">Item 3</li>
-</ul>
-```
+## When to split a component
+There are two basic rules when deciding whether to break a subcomponent into a new top-level component:
+  1. Could it be used elsewhere?
+  2. Does it have variations?
+If either of these conditions are true, it is probably better to split it into its own component.
 
 ```scss
-.c-select__option {}
-.c-select__option[aria-selected] {} // state, using `[aria-selected]` instead of `.c--is-selected`
+// Good!
+
+.post__title {
+}
+
+.post__title--is-selected {
+}
+
+.post__title--primary {
+}
+
+// Bad!
+//
+// You should never end up with subcomponents of subcomponents like this
+
+.blog__post__title {
+}
+
+.blog__post__title--is-selected {
+}
+
+.blog__post__title--primary {
+}
 ```
 
 
-## Class Prefix Conventions
-
-You'll have probably noticed by now that our class names have a variety of prefixes. If not, I will describe their usages now:
-
-Prefix | Purpose | Scaffold Directory |
------- | ------- | ------------------ |
-`.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
-`.t-` | Classes that start with `.t-` are Template specific classes. These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | */src/scss/templates*
-`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | */src/scss/globals/*
-`.m-` | **Deprecated** This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
-`.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
+## Contextual styles
+It is best to avoid contextual styles (components "reaching into" other components) — use variations instead.
 
 
-## Us versus Them (aka There's an x-ception to every rule)
+### Functional variables
+All variables used in a component should be functional instead of just visual. Functional variables can only refer to a visual variable.
 
-It's important to remember that we don't write our own markup. We write a bastardized version of existing markup. In many cases, we're simply adding wrappers or class names to markup that already exists. Rarely, we'll completely re-template something.
-
-Knowing that, how do we make the decision to use our class names or their class names in our styling and how does that affect the way we write our CSS? If we're using their class names, we obviously can't follow the CEM/BEM syntax laid out above. We've laid out some situational advice below on when to use their class names and when to use ours. We also talk about ways to adjust the code style laid out above when using their class names.
-
-### When to use our selector naming scheme
-
-* Whenever you're writing your own markup in a template.
-* Whenever you're remixing or adding markup through the konf.
-* Whenever you're adding classes to existing markup.
-* Whenever you find yourself using @extend.
-
-### When to use their existing selectors
-
-* Whenever possible — when you're not required to do any of the things above. It's faster and easier to use their markup than it is to add our own.
-* When their markup allows for it. For example, if they don't use classes or they don't use them with any consistency, it doesn't make sense to use their selectors.
-* When their markup isn't easily changed. AJAXed content or content added after a page is loaded is an example of this.
-
-### How to use their existing selectors in our components
-
-This is a list of rules to use when you're using their selectors within our modules section.
-
-> Remember, it's okay to mix our selector naming scheme with their selector naming scheme. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
-
-Always wrap the module with our naming scheme
 
 ```scss
-// Do
-.c-blog-post {
-    .title {
-    }
+// Good!
+
+$success-color: $green;
+
+.badge--success {
+  background: $success-color;
 }
 
+// Bad!
+//
+// You should never use a visual variable directly in your component
+$green: #96bf48;
 
-// Don't
-.blogpost {
-    .title {
-    }
+.badge--success {
+  background: $green;
 }
 ```
 
-Subcomponents can be directly inside their parent component, but adding your own classes should be your FIRST approach so as to avoid nesting.
 
-Constantly evaluate your nesting in situation like this.
+### Layout subcomponents
+Dedicated subcomponents should be used for layout separated from other visual styles.
 
 ```scss
-// Okay
-.c-blog-post {
-    .content {
-    }
-
-    .image {
-    }
+// Good!
+.post__header {
+  flex: 1 1 auto;
 }
 
-
-// Better
-.c-blog-post {
+.post__title {
+  font-size: $font-size-large;
+  color: $black;
 }
 
-.c-blog-post__content {
-}
+// Bad!
+//
+// You should never use a subcomponent for both layout and visual treatments
 
-.c-blog-post__image {
-}
-
-
-// Don't
-.c-blog-post {
-    .content {
-        .image {
-        }
-    }
+.post__title {
+  flex: 1 1 auto;
+  font-size: $font-size-large;
+  color: $black;
 }
 ```
 
-Use their modifiers the same way you would use our modifiers. Chain it to the component or subcomponent it directly affects.
-
-```scss
-// Okay
-.c-blog-post {
-    &.darkpost {
-    }
-}
-
-
-// Better
-.c-blog-post {
-    &.c--dark-post {
-    }
-}
-
-
-// Don't
-.darkpost {
-}
-
-
-// Don't
-.c-blog-post {
-    .darkpost & {
-    }
-}
-```
-
-> If they use their modifiers in weird or unexpected ways, consider using the konf or templating to add our modifier classes instead.
-
-Continue on to [Block Comment Documentation Guide →](../localization-and-theming-best-practices/readme.md)
+Continue on to [CSS best practices →](css-best-practices#css-best-practices)
