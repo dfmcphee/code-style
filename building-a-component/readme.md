@@ -79,7 +79,7 @@ Like components these should always live at the root level of a file. Do not nes
 
 // Bad!
 //
-// Note how .c-blog-post__title is nested inside it's parent class
+// Note how .blog-post__title is nested inside it's parent class
 .blog-post {
   .blog-post__title {
   }
@@ -250,7 +250,7 @@ $green: #96bf48;
 
 
 ## Layout subcomponents
-Dedicated subcomponents should be used for layout separated from other visual styles.
+Dedicated subcomponents should be used for layout and separate from other visual styles.
 
 ```scss
 // Good!

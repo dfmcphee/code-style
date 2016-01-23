@@ -63,9 +63,9 @@ Sass files (technical scss files) should be a Sass partial
 Sass files are named after it's root class name
 
 * Components: the base component will be the filename
-    * `ui-color-picker` makes `_ui-color-picker.scss`
+  * `ui-color-picker` makes `_ui-color-picker.scss`
 * Areas: the area controller will be the filename
-    * `orders` makes `_orders.scss`
+  * `orders` makes `_orders.scss`
 
 
 ## Commenting best practice
