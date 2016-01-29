@@ -377,6 +377,6 @@ An example of both the doc block and dependencies can be seen here:
 // @return [integer]
 
 @function add($value, $modifier) {
-    @return $value + $modifier;
+  @return $value + $modifier;
 }
 ```
