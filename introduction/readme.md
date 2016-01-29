@@ -2,7 +2,7 @@
 
 This document outlines the way our team is expected to write their CSS. Following this document ensures that everyone is writing markup that feels familiar and can be maintained by anyone with little overhead.
 
-We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM naming conventions, and others.
+We follow a mixture of various methodologies including, but not limited to: SMACSS' separation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM naming conventions, and others.
 
 
 ## Table of contents
@@ -20,14 +20,14 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 
 ## Philosophy & structure
 
-We strive to write modular, component driven CSS with a clear seperation of concerns, structured so they are reuseable and findable. In the end, our code should be easy to maintain by anyone - even for new people entering a project.
+We strive to write modular, component driven CSS with a clear separation of concerns, structured so they are reuseable and easy to find. In the end, our code should be easy to maintain by anyone – even for new people entering a project.
 
-These guidelines are a summary of our base principles: Our code bases should all...
+These guidelines are a summary of our base principles: Our code bases should all be:
 
-* Be written like a single person typed it
-* Be components first
-* Be page specific only as a last resort
-* Be written with nesting no deeper than 2 levels preferably
+* Composed as if written by only one person
+* Components first
+* Page specific only as a last resort
+* Written with nesting (preferably) no deeper than 2 levels
 
 Our separation of concerns is reflected by our style directory structure as follows:
 
@@ -44,6 +44,6 @@ Our separation of concerns is reflected by our style directory structure as foll
 
 > You may notice the heavy influence of methodologies like [SMACSS](http://smacss.com/) and [OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/).
 >
-> Familiarity with these concepts is cruicial! If you are not, then we urge that you at least learn the basics: [Jonathan Snook's "CSS is a Mess"](http://vimeo.com/99877232) and [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
+> Familiarity with these concepts is crucial! If you are not, then we urge that you at least learn the basics: [Jonathan Snook's "CSS is a Mess"](http://vimeo.com/99877232) and [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
 
 Continue on to [Building a component →](../building-a-component)

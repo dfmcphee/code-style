@@ -21,16 +21,16 @@
 
 ## Code like it's 2020
 
-Because we use Autoprefixer, we are able to write our code as if all our properties are fully supported. When compiled, Autoprefixer will of course convert any properties that have special requirements as far as compatibility is concerned and add prefixes to them as needed.
+Because we use Autoprefixer, we are able to write our code as if all of our properties are fully supported. When compiled, Autoprefixer will convert any properties that have special requirements for compatibility and add vendor prefixes where necessary.
 
-That includes things like Flexbox, CSS3 properties, and many more! This also means that we *should not* be using mixins for prefixing. Remember that Autoprefixer uses data from caniuse.com to determine what will be output — so properties that don't have enough browser support should probably still be avoided (or at least used with extreme caution).
+This includes things like Flexbox, CSS3 properties, and more! This also means that we *should not* be using mixins for prefixing. Autoprefixer uses data from caniuse.com to determine what will be output — so properties that don't have sufficient browser support should probably still be avoided (or at least used with extreme caution).
 
 
 ## Selector specificity
 
-We strive to write performant, portable, selectors whenever possible. In short, [keep your CSS selectors short](http://csswizardry.com/2012/05/keep-your-css-selectors-short/).
+We strive to write performant and portable selectors whenever possible. In short, [keep your CSS selectors short](http://csswizardry.com/2012/05/keep-your-css-selectors-short/).
 
-To help do that, it might be helpful to know how to measure specificity which [Smashing Magazine has an article just for that](http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/)!
+To help do that, it might be useful to know how to measure specificity. [Smashing Magazine has an article just for that](http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/)!
 
 ### Dos:
 
@@ -45,20 +45,20 @@ To help do that, it might be helpful to know how to measure specificity which [S
 * Never over qualify selectors because it impacts performance.
 
 ```scss
-// NO
-ul.button-group li.button {
-}
-
 // Yes
 .button-group__button {
 }
 
 // NO
-#something {
+ul.button-group li.button {
 }
 
-// Yes (Only as a last resort!)
+// Yes (only as a last resort!)
 [id="something"] {
+}
+
+// NO
+#something {
 }
 ```
 
@@ -69,7 +69,7 @@ A common use case is to target input types. For example `input[type="text"]`.
 
 It's important to realize that the element selector is not necessary here. If you think about it, we are actually increasing the specificity needlessly. Attribute selectors have the same specificity as a class. The above example has the same specificity as `input.someClass`
 
-All we really need is `[type="text"]`, because that is sufficient for targeting text inputs.
+All we really need is `[type="text"]` – the "attribute *equals* value" is sufficient for targeting text inputs.
 
 In summary: *attribute selectors should be used alone*, just like classes.
 
@@ -109,9 +109,9 @@ There are certain types of styles that are context sensitive, but tend to be wri
 }
 ```
 
-This is difficult to maintain because this CSS does not communicate anything about what's happening. What is this class absolutely positioned relative to? Good luck trying to figure that out, because chances are you're going to have to manually load up the page that this component exists on and inspect it to find it. That's assuming you know what page this component is used.
+This is difficult to maintain because this CSS does not communicate anything about what's happening. What is this class absolutely positioned relative to? Good luck trying to figure that out, because chances are you're going to have to manually load up the page that this component exists on and inspect it to find it. That's assuming you know what page this component is used on.
 
-A better approach is to build code that is contextual aware. For example:
+A better approach is to build code that is contextually aware. For example:
 
 ```
 // PDP
@@ -135,16 +135,16 @@ A better approach is to build code that is contextual aware. For example:
 }
 ```
 
-Not only is the code written in a way that clearly informs a reader how these context sensitive styles relate, we use documentation to make it perfectly explicit. There is no ambiguity here.
+Not only is the code written in a way that clearly informs the reader of how these context sensitive styles relate, we use documentation to make it perfectly explicit. There is no ambiguity here.
 
-Another benefit is that this keeps our code isolated really well. Action Bar can be put anywhere and still work.
+Another benefit is that this keeps our code isolated. Action Bar can be used outside of `.pdp__summary` and still work.
 
 
 ## Format
 
-We want our CSS to be written consistently no matter who the code author is. In order to do so, please follow these below rules.
+We want our CSS to be written consistently no matter who the code author is. In order to do so, please follow these rules:
 
-Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier — see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
+> Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier — see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
 * One selector per line
 * Use a soft indent of two spaces
@@ -181,9 +181,9 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 
 ## Declaration order
 
-Following our practice of writing consistent code, we also want all properties to be consistently ordered according to the bellow standard.
+Following our practice of writing consistent code, we also want all properties to be consistently ordered according to the following standard:
 
-And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help ensure property order is consistent - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
+> As before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help ensure property order is consistent - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
 1. Extends
 1. Mixins/Includes (except for property specific mixins)
@@ -270,7 +270,7 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 
 ### Exceptions and variations
 
-Sometimes we break out of this convention to add to the readability of our stylesheets. This occurs especially often with long comma separated property values like gradients, shadows, transitions, or includes. These can be arrange across multiple lines and indentation levels to help with diffs and readability.
+Sometimes we break out of this convention to add to the readability of our stylesheets. This occurs especially often with long comma separated property values like gradients, shadows, transitions, or includes. These can be arranged across multiple lines and indentation levels to help with diffs and readability.
 
 ```scss
 .x-selector {
