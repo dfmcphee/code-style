@@ -7,7 +7,7 @@ This is a guide that outlines how to format comment documentation in SCSS files.
 Headings
 --------
 
-Headings in CSS comments should follow the following format:
+Headings in CSS comments should conform to the following format:
 
 * Level 1 headings use the `=` underline
 * Level 2 headings use the `-` underline
@@ -29,10 +29,10 @@ For line spacing before and after headings, follow these rules:
 
 1. One line after a heading
 2. Two lines before a heading, except...
-3. If headings are adjacent, then use only one line between them
+  * If headings are adjacent, then use only one line between them
 4. Omit slashes when there is more than one line between comments
 
-For example...
+For example:
 
 ```
 // Documentation Headings Example
@@ -59,8 +59,8 @@ For example...
 Lists
 -----
 
-Lists should be written using ordinary markdown syntax. When breaking to new lines,
-add the necessary space to make the new lines line up with the rest of the content.
+Lists should be written using ordinary markdown syntax. When breaking to a new line,
+add indentation so the new lines align with the rest of the content.
 
 ```
 // * This is an example list whose content is just too long for one line, so we
@@ -230,7 +230,7 @@ Alternatively:
 }
 ```
 
-Note that if sub-template classes are required, they should be included OUT of
+Note that if sub-template classes are required, they should be included **out** of
 the base template scope and with a level 2 heading. Example:
 
 ```

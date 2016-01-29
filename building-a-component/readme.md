@@ -27,9 +27,9 @@ We use [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-
 
 ```html
 <div class="blog">
-    <h1 class="blog__title">Blog Title</h1>
+    <h1 class="blog__title">Blog title</h1>
     <div class="blog-post blog-post--featured">
-        <h2 class="blog-post__title">Blog Post Title</h2>
+        <h2 class="blog-post__title">Blog post title</h2>
         <div class="blog-post__date">
             <p class="blog-post__time">12:03pm</p>
         </div>
@@ -53,7 +53,7 @@ This example may seem confusing at first but if we break down each of the select
 
 The highest level of a module — it should describe an independent module that you are creating. Components should be able to exist on their own or within other components. They should always live at the root level of a file.
 
-* Hyphenated naming.
+* Single hyphenated naming.
 * Not nested.
 
 ```scss
@@ -65,7 +65,7 @@ The highest level of a module — it should describe an independent module that 
 
 This is a secondary element inside of a component. It is always written as a chain of its parent component to avoid any inheritance issues. Your subcomponents should be named in a way that keeps them from having to have subcomponents of their own. If you find you need to write a subcomponent for a subcomponent, consider breaking the parent out into its own component.
 
-Like components these should always live at the root level of a file. Do not nest these within the parent component or another subcomponent. The class name should do all the work necessary.
+Just like components, these should always live at the root level of a file. Do not nest these within the parent component or another subcomponent. The class name should do all the work necessary.
 
 * Prefixed by the parent component and two underscores `component-name__`.
 * Live below the parent component in the root of the file. Not nested.
@@ -112,7 +112,7 @@ Sometimes a component modifier will affect its sub-components. There are several
 
 ```html
 <div class="blog-post blog-post--featured">
-    <h2 class="blog-post__title">Blog Post Title</h2>
+    <h2 class="blog-post__title">Blog post title</h2>
     <div class="blog-post__date">
         <p class="blog-post__time">12:03pm</p>
     </div>

@@ -1,6 +1,6 @@
 # Sass (SCSS) best practices
 
-As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` syntax and [Autoprefixer](https://github.com/ai/autoprefixer) to build our CSS. We have some guidelines when using these guys.
+As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` syntax and [Autoprefixer](https://github.com/ai/autoprefixer) to build our CSS. We have some guidelines for this.
 
 
 ## Table of contents
@@ -27,22 +27,26 @@ Try not to nest more than 2 levels deep.
 
 [This example](http://sassmeister.com/gist/891f2002ef23bf8e4788) demonstrates a real-world scenario that happens when developers recklessly author code to match the markup too closely.
 
-It is a bad habit to nest every or most times an element is appears nested in the markup. CSS is not HTML, so we can't treat it in the same way. We have to be mindful of the selectors that we are compiling.
+It is a bad habit to nest every selector as it appears in the markup. CSS is *not* HTML, so we don't treat it as such. We must be mindful of the selectors we are compiling.
 
-What strategy do we use to avoid unnecessary nesting? Let's use the above [sassmesiter.com](http://sassmeister.com/gist/891f2002ef23bf8e4788) example and tweak it to show a few ways we could approach it instead. We could...
+Using the [sassmesiter.com](http://sassmeister.com/gist/891f2002ef23bf8e4788) example above, let's make some adjustments to clean this up:
 
 * [Nest less](http://sassmeister.com/gist/12ca39f4fa72cafc5a75)
 * [Don't nest at all](http://sassmeister.com/gist/67f8fd11522e1d4692a9) and use template classes
 * or, [don't nest at all](http://sassmeister.com/gist/036b0a161a47f321b776) and use component classes
 
-The approach you use depends on many factors. How much control you have over the markup? How reusable are the styles that you are writing? Are the desktop or inline styles that you must account for?
+The approach you use depends on many factors.
 
-Chances are you will have to use a combination of all these strategies that works based on the state of your project and its markup.
+* How much control do you have over the markup?
+* How reusable are the styles that you are writing?
+* Are there inline or @media styles that you must account for?
+
+Chances are, you will be using a combination of these strategies that work best based on the state of your project and its markup.
 
 
 ## Global vs. Local Variables/Mixins
 
-Any `$variable` that is used in more than one file should be placed in the `foundation/_variables.scss` file. Others should be placed at the top of the file in which they're used.
+Any `$variable` that is used in more than one file should be placed in the `foundation/_variables.scss` file. All other variables should be placed at the top of the file in which they are used.
 
 Any `@mixin` that is used in more than one file should be placed in the `foundation/_mixins.scss` folder.
 
@@ -58,9 +62,9 @@ The file naming convention should be identical to the class naming convention as
 
 Sass files (technical scss files) should be a Sass partial
 
-* This means it's prepended with a underscore `_`
+* This means it's prepended with an underscore `_`
 
-Sass files are named after it's root class name
+Sass files are named after their root class name
 
 * Components: the base component will be the filename
   * `ui-color-picker` makes `_ui-color-picker.scss`
@@ -70,7 +74,7 @@ Sass files are named after it's root class name
 
 ## Commenting best practice
 
-When writing comments, it is best to following a format that makes making changes easy, without having to clutter your code.
+When writing comments, it is best to follow a format that makes making changes easy, without having to clutter your code.
 
 The first thing to keep in mind is that we section our styles based on components/templates and sub-components/templates.
 
