@@ -111,12 +111,12 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 // 2. Absolutely positioned relative to the parent .my-component
 
 .my-component {
-    position: relative; // 2
-    display: block; // 1
+  position: relative; // 2
+  display: block; // 1
 
-    .some-child {
-        position: absolute; // 2
-    }
+  .some-child {
+    position: absolute; // 2
+  }
 }
 
 
@@ -128,7 +128,7 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 // 1. We see the number 1 again! But this note only counts for the code below and ignore the 1 above
 
 .my-component__inner {
-    display: block; // 1
+  display: block; // 1
 }
 
 ```
@@ -150,7 +150,7 @@ This is a rare use case, but can be useful sometimes when you have the same set 
 // A. Hide these elements because it's unneeded desktop markup
 
 .my-component {
-    display: none; // A
+  display: none; // A
 }
 
 
@@ -158,7 +158,7 @@ This is a rare use case, but can be useful sometimes when you have the same set 
 // -------------------
 
 .my-component__inner {
-    display: none; // A
+  display: none; // A
 }
 ```
 

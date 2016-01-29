@@ -27,13 +27,13 @@ We use [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-
 
 ```html
 <div class="blog">
-    <h1 class="blog__title">Blog title</h1>
-    <div class="blog-post blog-post--featured">
-        <h2 class="blog-post__title">Blog post title</h2>
-        <div class="blog-post__date">
-            <p class="blog-post__time">12:03pm</p>
-        </div>
+  <h1 class="blog__title">Blog title</h1>
+  <div class="blog-post blog-post--featured">
+    <h2 class="blog-post__title">Blog post title</h2>
+    <div class="blog-post__date">
+      <p class="blog-post__time">12:03pm</p>
     </div>
+  </div>
 </div>
 ```
 
@@ -112,10 +112,10 @@ Sometimes a component modifier will affect its sub-components. There are several
 
 ```html
 <div class="blog-post blog-post--featured">
-    <h2 class="blog-post__title">Blog post title</h2>
-    <div class="blog-post__date">
-        <p class="blog-post__time">12:03pm</p>
-    </div>
+  <h2 class="blog-post__title">Blog post title</h2>
+  <div class="blog-post__date">
+    <p class="blog-post__time">12:03pm</p>
+  </div>
 </div>
 ```
 
@@ -176,9 +176,9 @@ An alternative construction using the `has` prefix is reserved for marking a par
 
 ```html
 <ul class="select select--has-selection">
-    <li class="select__option select__option--is-selected">Item 1</li>
-    <li class="select__option">Item 2</li>
-    <li class="select__option">Item 3</li>
+  <li class="select__option select__option--is-selected">Item 1</li>
+  <li class="select__option">Item 2</li>
+  <li class="select__option">Item 3</li>
 </ul>
 ```
 
