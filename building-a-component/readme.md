@@ -224,7 +224,7 @@ If either of these conditions are true, it is probably better to split it into i
 It is best to avoid contextual styles (high-level components "reaching into" other high-level components) — use modifiers instead.
 
 ```scss
-.blog {
+.home-page {
   // ...some styles...
 }
 
@@ -234,13 +234,13 @@ It is best to avoid contextual styles (high-level components "reaching into" oth
 
 // Good!
 //
-.blog-post--more {
+.blog-post--home {
   // ...some MORE styles...
 }
 
 // Bad!
 //
-.blog {
+.home-page {
   .blog-post {
     // ...some MORE styles...
   }
