@@ -8,7 +8,7 @@
   * [Philosophy & structure](introduction#philosophy--structure)
 * [Building a component](building-a-component)
   * [Basic conventions](building-a-component#basic-conventions)
-  * [BEM](building-a-component#bem)
+  * [CSM](building-a-component#csm)
     * [Components](building-a-component#components)
     * [Sub-components](building-a-component#sub-components)
     * [Modifiers](building-a-component#modifiers)

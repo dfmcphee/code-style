@@ -7,7 +7,7 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 
 * [Nest only when necessary](#nest-only-when-necessary)
     * [Beware nested comma separated selectors](#beware-nested-comma-separated-selectors)
-* [Global vs. Local Variables/Mixins](#global-vs-local-variablesmixins)
+* [Global vs. local variables/mixins](#global-vs-local-variablesmixins)
 * [`@extends`](#extends)
 * [Filename naming convention](#filename-naming-convention)
 * [Commenting best practice](#commenting-best-practice)
@@ -44,7 +44,7 @@ The approach you use depends on many factors.
 Chances are, you will be using a combination of these strategies that work best based on the state of your project and its markup.
 
 
-## Global vs. Local Variables/Mixins
+## Global vs. local variables/mixins
 
 Any `$variable` that is used in more than one file should be placed in the `foundation/_variables.scss` file. All other variables should be placed at the top of the file in which they are used.
 
@@ -53,7 +53,7 @@ Any `@mixin` that is used in more than one file should be placed in the `foundat
 
 ## `@extends`
 
-Just don't use it.
+Don't use them. When SASS compiles to CSS, any selectors that share an `@extend` will be grouped together – which could introduce conflicts in our production code. Another big concern is that `@extend` will not carry over into `@media` queries. Because of these limitations, we prefer to stick with `@include` mixins instead of `@extend` classes or placeholders.
 
 
 ## Filename naming convention
@@ -85,7 +85,7 @@ The second aspect of comments are the comments themselves! There are three types
 1. General Comments
 
 ```scss
-// My Component
+// My component
 // ============
 //
 // This is a general comment that applies to the whole of this section. It can contain
@@ -102,7 +102,7 @@ Direct comments are those that apply to a single line of code as denoted by the 
 Be aware that these notes typically only refer to the code directly beneath it, as far as just before the next section (i.e. the next sub-component). That next section could have it's own Direct Notes, but they will only apply to that section despite using the same numbers.
 
 ```scss
-// My Component
+// My component
 // ============
 //
 // Notes:
@@ -120,7 +120,7 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 }
 
 
-// My Component: Inner
+// My component: inner
 // -------------------
 //
 // Notes:
@@ -169,29 +169,14 @@ This is a rare use case, but can be useful sometimes when you have the same set 
 
 ## Variable naming convention
 
-Variable names should follow this pattern: `${modifer(s)}-{name}`.
+Variable names loosely resemble how we write `class` selectors, following this pattern: `${name}--{modifer(s)}`. We retain the `--` syntax of modifiers while forgoing the use of `__` to denote a sub-component or extension of the preceding "name".
 
-The name of a variable should describe the application of the variable value. For example, instead of saying `$color` (which is too generic to be useful), you would write `$link-color` which gives the name meaning and purpose.
+The name of a variable should describe the application of the variable value. For example, instead of saying `$color` (which is too generic to be useful), you would write `$link-color` which gives the name meaning and purpose. You may find the need to chain names together with a single `-`, such as `$component-subcomponent--modifier`.
 
-Similarly, the variable name can refer to specific properties such as `$border-radius` or `$border`.
+Similarly, the variable name can refer to specific properties such as `$border` or `$border-radius`.
 
-Modifiers should be added before the name. So our above examples with modifiers prepended to them will look like `$dark-link-color`, `$large-border-radius` and `$dotted-border`.
+Modifiers should be added after the name. So our above examples with modifiers appended to them will look like `$link-color--error`, `$border--dotted` and `$border-radius--large`.
 
-Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
-
-### Exceptions
-
-For color gradients, we follow a convention that looks like `{modifier}-{name}-{number}` where the number _roughly_ corresponds to some property level of that color, such as the greyscale level.
-
-```scss
-$grey-10 // 10% greyscale
-$grey-20 // 20% greyscale
-$grey-30 // 30% greyscale
-$grey-40 // 40% greyscale
-$grey-50 // 50% greyscale
-// etc.
-```
-
-Keep in mind that `$grey-10` does not HAVE to be exactly 10% greyscale. The point is only to provide a rough approximation and simplify the need to remember color values.
+Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$link-color--default`, `$border--normal` and `$border-radius--base` are unnecessary and discouraged.
 
 Continue on to [Block comment documentation guide →](../comments/Readme.md)
