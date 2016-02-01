@@ -54,7 +54,7 @@ ul.button-group li.button {
 }
 
 // Yes (only as a last resort!)
-[id="something"] {
+[id='something'] {
 }
 
 // NO
@@ -65,11 +65,11 @@ ul.button-group li.button {
 
 ## A note on attribute selectors
 
-A common use case is to target input types. For example `input[type="text"]`.
+A common use case is to target input types. For example `input[type='text']`.
 
-It's important to realize that the element selector is not necessary here. If you think about it, we are actually increasing the specificity needlessly. Attribute selectors have the same specificity as a class. The above example has the same specificity as `input.someClass`
+It's important to realize that the element selector is not necessary here. If you think about it, we are actually increasing the specificity needlessly. Attribute selectors have the same specificity as a class. The above example has the same specificity as `input.some-class`
 
-All we really need is `[type="text"]` – the "attribute *equals* value" is sufficient for targeting text inputs.
+All we really need is `[type='text']` – the "attribute *equals* value" is sufficient for targeting text inputs.
 
 In summary: *attribute selectors should be used alone*, just like classes.
 
@@ -84,7 +84,7 @@ We use BEM to name our components. It looks something like this:
 .ui-component--modifier
 ```
 
-We cover this convention in greater detail [here](../class-naming-conventions#class-naming-conventions).
+We cover this convention in greater detail [here](../building-a-component#csm).
 
 
 ## Size Units
@@ -185,7 +185,6 @@ Following our practice of writing consistent code, we also want all properties t
 
 > As before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help ensure property order is consistent - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
-1. Extends
 1. Mixins/Includes (except for property specific mixins)
 1. Position
 1. Display & Box Model
@@ -211,7 +210,7 @@ Following our practice of writing consistent code, we also want all properties t
   left: 10px;
   z-index: 10;
 
-  // Display & Box Model
+  // Display & box model
   display: inline-block;
   overflow: hidden;
   box-sizing: border-box;
@@ -239,7 +238,7 @@ Following our practice of writing consistent code, we also want all properties t
   // Styles that don't fall under any of the above categories
   pointer-events: none;
 
-  // Animations & Transitions
+  // Animations & transitions
   transition: all 0.2s;
 
   // Pseudo-classes
@@ -255,12 +254,12 @@ Following our practice of writing consistent code, we also want all properties t
     content: 'CSS Rules!';
   }
 
-  // Modifier Elements
+  // Modifier elements
   &.x--light {
     background: #999;
   }
 
-  // Child Elements
+  // Child elements
   span {
     font-weight: bold;
   }

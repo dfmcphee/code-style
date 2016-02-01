@@ -3,7 +3,7 @@
 
 ## Table of contents
 * [Basic conventions](#basic-conventions)
-* [BEM](#bem)
+* [CSM](#csm)
   * [Components](#components)
   * [Sub-components](#sub-components)
   * [Modifiers](#modifiers)
@@ -19,9 +19,9 @@
 Components should be named and created based on their primary function or use.
 This repository includes a [sample component](_sample-component.scss) to use as a reference when building out a new component.
 
-## BEM
+## CSM
 
-We use [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
+Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
 > BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Subcomponent instead.
 
@@ -37,9 +37,9 @@ We use [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-
 </div>
 ```
 
-This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
+If a component or modifier requires more than one word to describe its purpose, a single hyphen is used as a substitute for "spaces". Try to be concise – minimize the need for single hyphens whenever possible without sacrificing comprehension.
 
-`.blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
+`.blog` This is a component. It describes a high-level module or component. In this instance, it describes the container for all of our blog posts.
 
 `.blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
 
@@ -69,7 +69,6 @@ Just like components, these should always live at the root level of a file. Do n
 
 * Prefixed by the parent component and two underscores `component-name__`.
 * Live below the parent component in the root of the file. Not nested.
-* Are declared in the order they appear.
 * Subcomponents do not have to be direct children of the component in the markup. They can be any descendent.
 
 ```scss
@@ -222,7 +221,31 @@ If either of these conditions are true, it is probably better to split it into i
 
 
 ## Contextual styles
-It is best to avoid contextual styles (components "reaching into" other components) — use variations instead.
+It is best to avoid contextual styles (high-level components "reaching into" other high-level components) — use modifiers instead.
+
+```scss
+.home-page {
+  // ...some styles...
+}
+
+.blog-post {
+  // ...some styles...
+}
+
+// Good!
+//
+.blog-post--home {
+  // ...some MORE styles...
+}
+
+// Bad!
+//
+.home-page {
+  .blog-post {
+    // ...some MORE styles...
+  }
+}
+```
 
 
 ## Functional variables
