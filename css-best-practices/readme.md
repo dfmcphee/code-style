@@ -155,7 +155,10 @@ We want our CSS to be written consistently no matter who the code author is. In 
 * Do not specify units for a zero value (unless settings flex-basis because of an IE bug)
 * Include a space after each comma in a comma separated property list
 * User lowercase and shorthand hex values, e.g., #aaa
-* Always use hex values unless you are declaring rgba.
+* Always use hex values unless you are declaring rgba
+* Avoid introducing "magic colors" – designers should be using the color palette defined in our styleguide, but if a new color is introduced, make it a variable
+* Avoid `!important` wherever possible – if our CSS is structured properly it shouldn't ever be needed
+* Only style the property you are concerned with – avoid accidental resetting. Example: `background-color: #333;` instead of `background: #333`
 * Separate each ruleset by an empty line
 * Separate each declaration block by an empty line
 * Use `//` for comment blocks (instead of `/* */`)
