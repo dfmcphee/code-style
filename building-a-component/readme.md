@@ -39,9 +39,9 @@ Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [B
 
 If a component or modifier requires more than one word to describe its purpose, a single hyphen is used as a substitute for "spaces". Try to be concise – minimize the need for single hyphens whenever possible without sacrificing comprehension.
 
-`.blog` This is a component. It describes a high-level module or component. In this instance, it describes the container for all of our blog posts.
+`.blog` This is a component. It describes a high-level module. In this instance, it describes the container for all of our blog posts.
 
-`.blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
+`.blog__title` This is a sub-component. It's always a child of a component. In this instance, it is a title for our blog post container
 
 `.blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
 
@@ -51,7 +51,7 @@ If a component or modifier requires more than one word to describe its purpose, 
 
 ### Components
 
-The highest level of a module — it should describe an independent module that you are creating. Components should be able to exist on their own or within other components. They should always live at the root level of a file.
+This is the base of the independent component that you are creating. Components should be able to exist on their own or within other components. They should always live at the root level of a file.
 
 * Single hyphenated naming.
 * Not nested.
